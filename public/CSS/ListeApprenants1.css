@@ -1,0 +1,361 @@
+
+.conteneur{
+   
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 1rem;
+  
+}
+.side-bar{
+    flex: 1;
+    background-color: white;
+    padding: 10px;
+    /* border: 1px solid; */
+    margin-right: 1rem;
+    border-radius: 10px;
+   /*  transition: all  3s ease; */
+}
+
+.content{
+    flex: 4; 
+    position: relative;
+    display: flex;
+    flex-direction: column;
+   /*  transition: all 3s ease; */
+
+}
+img{
+    width: 50%;
+}
+.menu{
+   display: flex;
+   flex-direction: column;
+    gap: 1rem;
+    font-size: 2rem;
+}
+
+.droite{
+   /*  border: 1px solid; */
+    width: 35%;
+    display: flex;
+    justify-content: space-between; 
+    padding: 1rem;
+    position: absolute;
+    left: 65%;
+}
+.interm{
+    position: absolute;
+    top: 15%;
+    width: 100%;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+#bouton{
+    display: none;
+}
+#bouton:checked + .side-bar{
+    display: none;
+}
+
+.search-bar i{
+    position: relative;
+    left: 11rem;
+    top: 1rem;
+}
+.footer{
+    width: 100%;
+    height: 10%;
+    background-color: white;
+   /*  border: 1px solid; */
+    position: absolute;
+    top: 90%;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+
+}
+.promotions{
+    width: 100%;
+    background-color: white;
+    height: 50%;
+    position:relative;
+    top: 25%;
+    border-radius: 1rem;
+}
+.rond{
+    width: 3rem;
+    height: 3rem;
+    background-color: lightgray;
+    position: absolute;
+    left: 16rem;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.statut{
+    font-size: 1.5rem;
+}
+.icone a{
+    color: black ;
+}
+.icone i{
+    margin-right: 0.5rem;
+}
+.icone:hover {
+    background-color: #009088;
+}.date input{
+    padding: 0.5rem;
+    color: rgb(33, 169, 162);
+}
+.date input{
+    padding: 0.5rem;
+    color: rgb(33, 169, 162);
+}
+.promotions{
+    width: 100%;
+    background-color: white;
+    height: 60%;
+    position:relative;
+    top: 25%;
+    border-radius: 1rem;
+}
+.ligne{
+    height: 3rem;
+    width: 0.1rem;
+    /* border: 1px solid;  */
+    position: absolute;
+    left: 5.5rem;
+    top: 6.3rem;
+    background-color: lightgrey;
+    
+
+}
+.selection{
+    display: flex;
+   flex-direction: column;
+   position: absolute;
+   top: 11rem;
+   left: 6rem;
+}
+#ch1{
+    background-color: #009088;
+}
+.ligne{
+    height: 3rem;
+    width: 0.1rem;
+    /* border: 1px solid;  */
+    position: absolute;
+    left: 5.5rem;
+    top: 6.3rem;
+    background-color: lightgrey;
+    
+
+}
+.interm1{
+    position: absolute;
+    top: 15%;
+    width:100%;
+    height: 8%;
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    color: #009088;
+    justify-content: space-between;
+    background-color:white ;
+   border-radius: 1.5rem;
+}
+.mesboutons{
+    position: absolute;
+    left: 50rem;
+    top: 40%;
+}
+.mesboutons button {
+   
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    border: none;
+}
+button a{
+    color: white;
+}
+.list{
+    position: absolute;
+    top: 18%;
+    left: 10%;
+    
+}
+.list50{
+    position: absolute;
+    top: 18%;
+    left: 21%;
+    color: #009088;
+    
+}
+.filter{
+    position: absolute;
+    top: 23%;
+    left: 8%;
+  
+}
+.filter input{
+    width: 76rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+.folder img{
+    width: 5%;
+    position: absolute;
+    top: 33%;
+    left: 10%;
+    color: #009088;
+
+}
+table{
+    position: absolute;
+    top: 45%;
+    left: 10%;
+    width: 88%;
+}
+table thead{
+    background-color: #F7FAFF;
+    height: 2rem;
+    border-radius: 0.5rem;
+}
+.np{
+    color: #237a60;
+}
+table tr td{
+   text-align: center;
+   padding: 0.6rem;
+   font-weight: bold;
+}
+ 
+
+table tbody tr td img{
+    background-color: #03C2F3;
+    border: 0.5rem;
+    width: 40%;
+}
+#nouvelAprenant{
+    position: absolute;
+    top: 20%;
+    left: 22%;
+    border: 1px solid;
+    width: 60%;
+    height: 80%;
+    background-color: white;
+     z-index: -1;
+} 
+#popup{
+    display: none;
+}
+
+.haut{
+    width: 100%;
+    height: 10%;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+.infoP{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 15%;
+    gap: 2rem;
+  
+}
+form div input{
+    width: 70%;
+    height: 80%;
+    border-radius: 0.4rem;
+}
+form div{
+    width: 50%;
+}
+form{
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+top: 15%;
+padding: 3rem;
+}
+/* fichier model */
+
+.fichierModel{
+    width: 50%;
+    position: absolute;
+    height: 40%;
+    background-color: white;
+    border: 1px solid;
+    position: absolute;
+    top: 2rem;
+    left: 40%;
+    z-index: -1;
+}
+#popup2{
+    display: none;
+}
+#popup2:checked + .fichierModel{
+    z-index: 1;
+}
+#fermer{
+    display: none;
+}
+#fermer:checked + .fichierModel{
+    z-index: -1;
+}
+#nouvelAprenant1{
+    position: absolute;
+    left: 22%;
+   border: 1px solid;
+    width: 60%;
+    height: 100%;
+    background-color: white;
+     z-index: -1;
+
+   input
+   {
+    width: 95%;
+    height: 2rem;
+   }
+   .infoP1
+   {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 15%;
+    gap: 2rem;
+  
+     }
+    form
+    {
+        display: flex;
+        flex-wrap: wrap;
+        position: absolute;
+        top: 23%;
+        padding: 3rem;
+    }
+
+} 
+#popup:checked + #nouvelAprenant1{
+    z-index: 1;
+}
+#popup3{
+    display: none;
+}
+#popup3:checked + #nouvelAprenant{
+    z-index: 1;
+
+    #nouvelAprenant1{
+        z-index: -1;
+        
+    }
+
+}

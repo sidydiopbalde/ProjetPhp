@@ -1,0 +1,246 @@
+
+
+
+
+
+.interm{
+    position: absolute;
+    top: 15%;
+    width: 100%;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+#bouton{
+    display: none;
+}
+#bouton:checked + .side-bar{
+    display: none;
+}
+
+
+.footer{
+    width: 100%;
+    height: 10%;
+    background-color: white;
+    position: absolute;
+    top: 90%;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+
+}
+.promotions{
+    width: 100%;
+    background-color: white;
+    height: 50%;
+    position:relative;
+    top: 25%;
+    border-radius: 1rem;
+}
+.rond{
+    width: 3rem;
+    height: 3rem;
+    background-color: lightgray;
+    position: absolute;
+    left: 16rem;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.statut{
+    font-size: 1.5rem;
+}
+.icone a{
+    color: black ;
+}
+.icone i{
+    margin-right: 0.5rem;
+}
+.icone:hover {
+    background-color: #009088;
+}.date input{
+    padding: 0.5rem;
+    color: rgb(33, 169, 162);
+}
+.date input{
+    padding: 0.5rem;
+    color: rgb(33, 169, 162);
+}
+.promotions{
+    width: 100%;
+    background-color: white;
+    height: 70%;
+    position:relative;
+    top: 23%;
+    border-radius: 1rem;
+}
+.ligne{
+    height: 3rem;
+    width: 0.1rem;
+    position: absolute;
+    left: 5.5rem;
+    top: 6.3rem;
+    background-color: lightgrey;
+    
+
+}
+.selection{
+    display: flex;
+   flex-direction: column;
+   position: absolute;
+   top: 11rem;
+   left: 6rem;
+}
+#ch1{
+    background-color: #009088;
+}
+.ligne{
+    height: 3rem;
+    width: 0.1rem;
+    position: absolute;
+    left: 5.5rem;
+    top: 6.3rem;
+    background-color: lightgrey;
+    
+
+}
+
+.boutons{
+    position: absolute;
+    left: 2rem;
+    top: 25%;
+    display: flex;
+   justify-content: space-between;
+}
+.boutons button {
+   
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    border: none;
+}
+button a{
+    color: white;
+}
+.list{
+    position: absolute;
+    top: 18%;
+    left: 10%;
+    
+}
+.list50{
+    position: absolute;
+    top: 18%;
+    left: 21%;
+    color: #009088;
+    
+}
+.filter{
+    position: absolute;
+    top: 23%;
+    left: 10%;
+  
+}
+.filter input{
+    width: 78rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+.folder img{
+    width: 5%;
+    position: absolute;
+    top: 32%;
+    left: 10%;
+    color: #009088;
+
+}
+table{
+    position: absolute;
+    top: 15%;
+    left: 2%;
+    width: 95%;
+    line-height: 1.5rem;
+}
+table thead{
+    background-color: #F7FAFF;
+    height: 2rem;
+    border-radius: 0.5rem;
+}
+/* .np{
+    color: #237a60;
+} */
+table tr td{
+   text-align: center;
+   padding: 0.6rem;
+   font-weight: bold;
+}
+  
+
+table tbody tr td img{
+    background-color: #03C2F3;
+    border: 0.5rem;
+    width: 40%;
+}
+#nouvelAprenant{
+    position: absolute;
+    top: 20%;
+    border: 1px solid;
+    width: 60%;
+    height: 80%;
+    background-color: white;
+    /*  z-index: -1; */
+} 
+/* #popup{
+    display: none;
+}
+#popup:checked + #nouvelAprenant{
+    z-index: 1;
+} */
+
+.haut{
+    width: 100%;
+    height: 10%;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+.infoP{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 15%;
+    gap: 2rem;
+  
+}
+form div input{
+    width: 70%;
+    height: 80%;
+    border-radius: 0.4rem;
+}
+form div{
+    width: 50%;
+}
+form{
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 15%;
+    padding: 3rem;
+}
+/* fichier model */
+
+.fichierModel{
+    width: 50%;
+    position: absolute;
+    height: 40%;
+    background-color: white;
+    border: 1px solid;
+    position: absolute;
+    top: 2rem;
+    left: 40%;
+   /*  z-index: -1; */
+}

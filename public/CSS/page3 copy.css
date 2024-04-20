@@ -1,0 +1,286 @@
+
+
+
+.content{
+    flex: 4;
+  
+    position: relative;
+    display: flex;
+    flex-direction: column;
+   /*  transition: all 3s ease; */
+
+}
+img{
+    width: 50%;
+}
+.menu{
+   display: flex;
+   flex-direction: column;
+    gap: 1rem;
+    font-size: 2rem;
+}
+.tete{
+    width: 100%;
+    background-color: white;
+    height: 12%;
+    border-radius:0.5rem;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  
+} 
+
+
+.carre{
+    border-radius: 100%;
+    background-color: whitesmoke;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgray;
+}
+.burg{
+    width: 15%;
+    height: 15%;
+    cursor: pointer;
+}
+
+.droite{
+   /*  border: 1px solid; */
+    width: 35%;
+    display: flex;
+    justify-content: space-between; 
+    padding: 1rem;
+    position: absolute;
+    left: 65%;
+}
+.interm{
+    position: absolute;
+    top: 15%;
+    width: 100%;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+#bouton{
+    display: none;
+}
+#bouton:checked + .side-bar{
+    display: none;
+}
+.search-bar i{
+    position: relative;
+    left: 11rem;
+    top: 1.rem;
+}
+.footer{
+    width: 100%;
+    height: 10%;
+    background-color: white;
+   /*  border: 1px solid; */
+    position: absolute;
+    top: 90%;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+
+}
+.promotions{
+    width: 100%;
+    background-color: white;
+    height: 60%;
+    position:relative;
+    top: 25%;
+    border-radius: 1rem;
+}
+.rond{
+    width: 3rem;
+    height: 3rem;
+    background-color: lightgray;
+    position: absolute;
+    left: 16rem;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.statut{
+    font-size: 1.5rem;
+}
+.icone a{
+    color: black ;
+}
+.icone i{
+    margin-right: 0.5rem;
+}
+.icone:hover {
+    background-color: #009088;
+}.date input{
+    padding: 0.5rem;
+    color: rgb(33, 169, 162);
+}
+.date input{
+    padding: 0.5rem;
+    color: rgb(33, 169, 162);
+}
+.promotions{
+    width: 100%;
+    background-color: white;
+    height: 30%;
+    position:relative;
+    top: 25%;
+    border-radius: 1rem;
+}
+.ligne{
+    height: 3rem;
+    width: 0.1rem;
+    /* border: 1px solid;  */
+    position: absolute;
+    left: 5.5rem;
+    top: 6.3rem;
+    background-color: lightgrey;
+    
+}
+.selection{
+   
+    display: flex;
+   flex-direction: column;
+   position: relative;
+   top: 11rem;
+   left: 6rem;
+ 
+}
+#ch1{
+    background-color: #009088;
+}
+.bouttons{
+    padding: 1rem;
+    display: flex;
+    gap:2rem;
+}
+.back{
+    background-color: lightgrey;
+    padding: 0.5rem;
+    width: 6rem;
+    border-radius: 1rem;
+    border: none;
+}
+.create{
+    background-color: #009088;
+    padding: 0.5rem;
+    width: 6rem;
+    border-radius: 1rem;
+    border: none;
+}
+.create a{
+   color: white;
+} 
+
+@media screen and (max-width: 1024px) {
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+    .tete {
+        width: 100%;
+        flex-direction: column;
+    }
+    .gauche, .droite {
+        width: 100%;
+        position: static;
+        margin: 1rem 0;
+    }
+}
+
+/* Pour les petits écrans (téléphone) */
+@media screen and (max-width: 768px) {
+    .side-bar {
+        display: none;
+    }
+    .content {
+        width: 100%;
+    }
+    .tete {
+        flex-direction: column;
+        align-items: center;
+    }
+    .search-bar {
+        width: 100%;
+        margin-top: 1rem;
+    }
+    .gauche, .droite {
+        width: 100%;
+        position: static;
+        margin: 1rem 0;
+    }
+}
+.c1{
+    position: absolute;
+    top: -9rem;
+   font-weight: bold;
+   display: flex;
+   width: 20rem;
+}
+.c2{
+    position: absolute;
+    top: -9rem;
+    left: 60rem; 
+    display: flex;
+    gap: 1rem;
+}
+.montab{
+    position: absolute;
+    top: -6rem;
+    width: 80rem;
+    line-height: 2rem;
+}
+.montab thead{
+    background-color: #F7FAFF;
+}
+.montab tr{
+  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.items{
+    position: absolute;
+    display: flex;
+    width: 20rem;
+    
+    
+}
+
+/* Pour les très petits écrans (mobiles) */
+@media screen and (max-width: 480px) {
+    .menu {
+        font-size: 1.2rem;
+    }
+    .tete {
+        flex-direction: column;
+        align-items: center;
+    }
+    .search-bar {
+        width: 100%;
+        margin-top: 1rem;
+    }
+    .gauche, .droite {
+        width: 100%;
+        position: static;
+        margin: 1rem 0;
+    }
+    .promotions {
+        padding: 0.5rem;
+    }
+    .footer {
+        font-size: 0.8rem;
+    }
+    .material-icons {
+        font-size: 24px;
+    }
+}

@@ -1,0 +1,115 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+
+}
+body{
+    height: 100vh;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Pour les mobiles */
+@media screen and (max-width: 768px) {
+    .conteneur {
+      width: 140%;
+    }
+    .champs {
+      width: 100%;
+      margin: 0 auto;
+    }
+    .logIn {
+      width: 140%;
+    }
+  }
+  
+  /* Pour les tablettes */
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .conteneur {
+      width: 100%;
+    }
+    .champs {
+      width: 100%;
+    }
+  }
+  .conteneur {
+    width: 30vw;
+  }
+  
+  .champs {
+    width: 60%;
+    font-size: 16px;
+  }
+/* .conteneur{
+    width: 30%;
+    height: 50%;
+ 
+
+} */
+/* img{
+    width: 40%;
+    margin-left:-10rem;
+   padding: 02rem;
+   
+} */
+img{
+    width: 40%; max-width: 200px;
+}
+.conect{
+
+    width: 80%;
+    background-color: white;
+        top: 40%;
+       /*  border: 1px solid; */
+        border-radius: 5px;
+        background-color: white;
+        display: flex;
+       /*  justify-content: center;
+        align-items: center; */
+        flex-direction: column;
+      gap: 0.5rem;
+    padding: 0.9rem;
+     
+}
+.formulaire{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 2rem;
+   
+}
+.add{
+   padding: 1rem;
+   border-radius: 5px;
+}
+.requierd{
+    background-color: pink;
+    color: red;
+    padding: 1rem;
+    border-radius: 5px;
+}
+.logIn{
+    background-color: rgb(33, 169, 162);
+    width: 80%;
+    text-align: center;
+    border-radius: 5px;
+    padding: 0.5rem 0.6rem;
+}
+.remember{
+    display: flex;
+    justify-content: space-around;
+   /*  margin: 1rem; */
+   width: 80%;
+   margin: 0.5rem;
+
+}
+.conect i{
+  position: absolute;
+  top: 35rem;
+  left: 66rem;
+
+}

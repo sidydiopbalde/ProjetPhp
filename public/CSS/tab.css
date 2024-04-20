@@ -1,0 +1,28 @@
+table{
+    position: absolute;
+    top: 45%;
+    left: 10%;
+    width: 88%;
+    border-collapse: collapse;
+   
+}
+table thead{
+    background-color: #F7FAFF;
+    height: 2rem;
+    border-radius: 0.5rem;
+}
+.np{
+    color: #237a60;
+}
+table tr td{
+   text-align: center;
+   
+   font-weight: bold;
+}
+ 
+
+table tbody tr td img{
+    background-color: #03C2F3;
+    border: 0.5rem;
+    width: 40%;
+}

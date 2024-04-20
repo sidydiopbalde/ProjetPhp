@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Ubuntu", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    /* overflow: hidden; */
+}
+
+.container{
+  
+    width: 80%;
+    height: 80%;
+    display: flex;
+}
+.side-bar{
+    flex: 1;
+    background-color: brown;
+    padding: 10px;
+}
+
+.content{
+    flex: 3;
+}
+
+.search input, select{
+    width: 100%;
+    font-size: 16px;
+    padding: 5px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+.btns{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0 10px 0;
+}
+
+.btn{
+    width: 48%;
+    border: 1px solid;
+    height: 50px;
+    border-radius: 5px;
+    position: relative;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.btn div{
+    position: absolute;
+}
+
+.btn div:nth-child(1){
+    top: 5px;
+    left: 5px;
+    background-color: aqua;
+    padding: 3px;
+    border-radius: 50%;
+}
+
+.btn div:nth-child(2){
+    top: 5px;
+    right: 5px;
+}
+
+.btn div:nth-child(3){
+    width: 90%;
+    bottom: 5px;
+    left: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+
