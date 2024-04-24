@@ -152,7 +152,7 @@ background-color: white;
 .ref5{
     left: 67rem;
     width: 20rem;
-    height: 16rem;
+    height: 25rem;
     display: flex;
     flex-direction: column;
     padding: 1rem;
@@ -173,4 +173,96 @@ background-color: white;
 
 .active{
     color: #0ea149;
+}
+.group{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 20rem;
+    gap:1.5rem;
+}
+.img-ref{
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+
+}
+.group label{
+    
+        width: 80px;
+        height: 50px;
+        border-radius: 10px;
+        background-color: dodgerblue;
+        display: block;
+        display: flex;
+        align-items: center;
+        padding: 2px;
+    
+}
+#switch{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#switch .switch-button {
+appearance: none;
+background-color: #dfe1e4;
+border-radius: 70px;
+border-style: none;
+flex-shrink: 1;
+height: 34px; 
+margin: 0;
+position: relative;
+width: 60px; 
+}
+#switch .switch-button::before {
+content: "";
+bottom: -6px;
+left: -6px;
+position: absolute;
+right: -6px;
+top: -6px;
+}
+#switch .switch-button,
+#switch .switch-button::after {
+transition: all .15s ease-out;
+}
+#switch .switch-button::after {
+content: "";
+background-color: var(--color-white);
+border-radius: 50%;
+height: 31px; 
+left: 1px; 
+position: absolute;
+top: 1px; 
+width: 30px;
+}
+#switch input[type=checkbox] {
+cursor: default;
+}
+#switch .switch-button:hover {
+background-color: #c9cbcd;
+transition-duration: 0s;
+}
+#switch .switch-button:checked {
+background-color: #e73570;
+}
+#switch .switch-button:checked::after {
+background-color: var(--color-white);
+left: 29px; 
+}
+#switch :focus:not(.focus-visible) {
+outline: 0;
+}
+#switch .switch-button:checked:hover {
+background-color: #59e735;
+}
+
+.msg-error{
+    
+    color: red;
+    display: none;
+}
+.msg-error.active{
+    display: block;
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>liste des Apprenants</title>
-    <link rel="stylesheet" href="../public/CSS/ListeApprenants1.css">
+    <link rel="stylesheet" href="../public/CSS/administrateur.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -15,56 +15,22 @@
             <?php $id=$_SESSION['id']; $selectreferentiel=adapterSelectReferentiel($id);?>
     <div class="conteneur"> 
 
-           <?php  /* if(isset($_POST['ref'])){
-                            $ref=$_POST['ref'] ?? [];
-                            $_SESSION['checkedvalues']= $ref ?? "web";
-                        } */?>
+           
             <div class="interm">
-                <p>Apprenants</p><p style="font-size: 0.8rem;" >promos*Liste* details* Apprenants </p>
+                <p>Administrateur</p><p style="font-size: 0.8rem;" >admin*Liste* details* Administrateur </p>
             </div> 
             <form method="post" class="interm1" style="position:absolute; top:18%;">
-                <p><span style="color: black;">Promotions:</span>Promotion <?php echo $_SESSION['id']?></p><p><span style="color: black;">Referenciels:</span> 
+           
 
-                <!-- <select name="ref"  onchange="this.form.submit()" id="" style="border:none; color:green; font-size:15px;">
-
-                    <option value="referentiel" onchange="this.form.submit()">referentiel</option>
-
-                    <?php foreach($selectreferentiel as $sel):?>
-
-                    <option value="<?=$sel['libelleref']?>" onchange="this.form.submit()" <?php if(isset($_POST['ref']) && $_POST['ref']==$sel['libelleref']) echo 'selected'?>> <?=$sel['libelleref']?> </option>
-
-                    <?php endforeach ;?>
-
-                </select> -->
-                
-                    <div class="dropdown" id="dropdown">
-                      <div onclick="cliquer()">référentiels</div> 
-
-                        <div class="liste1" id="dropdown_content" style="position:absolute; z-index:1;">
-
-                            <input type="checkbox" name="referentiel" id="referentiel"  onchange="this.form.submit()"><label for="referentiel">tout</label>
-                                <?php foreach($selectreferentiel as $sel):?>
-
-                                <div><input type="checkbox" name="ref[]" id="id" onchange="this.form.submit()" value="<?=$sel['libelleref']?>" <?php if(in_array($sel['libelleref'],$_SESSION['checkedvalues'])) echo "checked";?>>  
-
-                                <label for="id" style="font-size:10px;"><?=$sel['libelleref']?></label>
-                        </div>
-
-                            <?php endforeach ;?>
-                        </div>
-                       
+               <div style="display:flex; justify-content:center; align-items:center;margin:auto;"><p style="position:absolute; top:20px; left:50px;">ADMINISTRATIONS De l'école du code ECSA</p></div> 
             
-                    </div>
-
-            </p>
                   
                     </form>
             <div class="promotions" style="position:absolute; top:29%;">
                
-                <span style=" width: 2rem; height: 2rem;border-radius: 100%; background-color: #009088; color: white;text-align: center; position: absolute; left: 5%; top: 6%;" > 1</span>
-                <span style=" position: absolute; left: 8%; top: 7%;"><strong>Promotion</strong> </span>
+                
                 <span class="ligne"></span>
-                <span class="list"><strong>Listes des apprenants</strong></span><span class="list50"><strong>(50)</strong></span>
+                <span class="list"><strong>Listes des administrateur</strong></span><span class="list50"><strong>(10)</strong></span>
                 <span class="filter" style="position:absolute; top:5rem;">
 
                     <form action="" method="post">
@@ -72,7 +38,7 @@
                     </form>
                    
                 </span>
-                <span class="folder" style=""><img src="../public/IMG/folder.jpeg" alt=""></span> 
+               
                
                 <div>
                     <table>
@@ -84,27 +50,29 @@
                                 <td>Email</td>
                                 <td>Genre</td>
                                 <td>Téléphone</td>
-                                <td>Actions</td>
-                                <td>REF</td>
+                                <td>Fonctions</td>
+                                
                             </tr>
                         </thead>
                         <tbody>
                          <?php   
 
-                        include('/var/www/html/Projet/model/listeApp.php');
+                        include('/var/www/html/Projet/model/administrateur_function.php');
                         include('/var/www/html/Projet/model/helpers.php');
                         //Définir le nombre d'apprenants à afficher par page
                          $nombreParPage = 6;
 
                          // Obtenir la liste complète des apprenants                     
                          $id=$_SESSION['id'];
-                         $listeApprenants = remplistApp($id);
+                         $chemin='/var/www/html/Projet/data/administrateur.csv';
+                         $listeAdmin = charger_data_admin($chemin);
 
                          // Calculer le nombre total d'apprenants
-                        $totalApprenants = count($listeApprenants);
+                        $totaladmin = count($listeAdmin);
 
                         // Calculer le nombre total de pages
-                         $nombrePages = ceil($totalApprenants / $nombreParPage);
+                         $nombrePages = ceil($totaladmin / $nombreParPage);
+                        
 
                          // Déterminer la page actuelle
                          $pageActuelle = isset($_GET['x']) ? $_GET['x'] : 1;
@@ -119,11 +87,11 @@
                             $search=$_POST['search'];
                         }
                         if (!empty($search)) {
-                            $listeFiltree = array_filter($listeApprenants, function ($apprenant) use ($search) {
+                            $listeFiltree = array_filter($listeAdmin, function ($apprenant) use ($search) {
                                 return $apprenant['Prenom'] == $search;
                                
                             });
-                            $listeApprenants = array_values($listeFiltree); // Réindexer le tableau filtré
+                            $listeAdmin = array_values($listeFiltree); // Réindexer le tableau filtré
                         }
                         /* filtre globale par le nom */
                         if(isset($_POST['filtrer'])){
@@ -131,44 +99,14 @@
                         }
                        
                         if (!empty($value)) {
-                            $listeFiltree = array_filter($listeApprenants, function ($apprenant) use ($value) {
-                                return $apprenant['Prenom'] == $value;
+                            $listeFiltree = array_filter($listeAdmin, function ($apprenant) use ($value) {
+                                return $apprenant['prenom'] == $value;
                               
                             });
-                            $listeApprenants = array_values($listeFiltree); // Réindexer le tableau filtré
+                            $listeAdmin = array_values($listeFiltree); // Réindexer le tableau filtré
                         }
-                        //filtrer selon le référentiel choisi
-                        if(isset($_POST['ref'])){
-                            $ref=$_POST['ref'] ?? [];
-                            $_SESSION['checkedvalues']=$ref;
-                        }
-
-                        /*  if(!empty($ref))
-                            {   if($ref=="referentiel"){
-                                    $listeApprenants = remplistApp($id);
-                                }
-                                else{
-                                    $listeFiltree = array_filter($listeApprenants, function ($apprenant) use ($ref) {
-                                        return $apprenant['ref'] == $ref;
-                                        
-                                    });
-                                    
-                                    $listeApprenants = array_values($listeFiltree); // Réindexer le tableau filtré
-                                }    
-                            }  */
-
-
-                            if (!empty($ref)) {
-                                if (in_array("referentiel", $ref)) {
-                                    $listeApprenants = remplistApp($id);
-                                } else {
-                                    $listeFiltree = array_filter($listeApprenants, function ($apprenant) use ($ref) {
-                                        return in_array($apprenant['ref'], $ref);
-                                    });
-                                    $listeApprenants = array_values($listeFiltree);
-                                }
-                            }
-                        $apprenantsPage = array_slice($listeApprenants, $indiceDebut, $nombreParPage);
+                      
+                        $apprenantsPage = array_slice($listeAdmin, $indiceDebut, $nombreParPage);
                          ?>  
 
                          <!--  Afficher les liens de pagination -->
@@ -182,16 +120,16 @@
                          </div>
  
                          <?php               
-                        foreach($apprenantsPage as $listeEtudiant): ?> 
+                        foreach($apprenantsPage as $listeadmin): ?> 
                               <tr>
-                                <td><img src="../public/IMG/user.jpeg" alt="user"></td>
-                                <td class="np"><?=$listeEtudiant["Nom"]?></td>
-                                <td class="np"><?=$listeEtudiant["Prenom"]?></td>
-                                <td> <?=$listeEtudiant["Email"]?> </td>
-                                <td><?=$listeEtudiant["Genre"]?></td>
-                                <td><?=$listeEtudiant["Téléphone"]?></td>
-                                <td><input type="checkbox" style="accent-color: green;"> </td>
-                                <td><?=$listeEtudiant["ref"]?></td>
+                                <td><img src="<?=$listeadmin["image"]?>" alt="user"></td>
+                                <td class="np"><?=$listeadmin["nom"]?></td>
+                                <td class="np"><?=$listeadmin["prenom"]?></td>
+                                <td> <?=$listeadmin["email"]?> </td>
+                                <td><?=$listeadmin["genre"]?></td>
+                                <td><?=$listeadmin["telephone"]?></td>
+                                <td><?=$listeadmin["fonction"]?></td>
+                                
                              </tr>
                            <?php endforeach?>
                         
@@ -318,25 +256,12 @@
                 <input type="checkbox" name="" id="fermer">
                 <input type="checkbox" name="" id="popup2">
                
-                <div class="fichierModel">
-                    <span>choisir un fichier excel</span>
-
-                    <div style="width: 90%; height: 70%; border: 2px dotted  ; display: flex; justify-content: center; align-items: center;position: absolute; left: 5%;">
-                        <input type="text" placeholder="drop files here or click to upload" style="height:20% ;">
-                    </div>
-                    
-                    <span style="position: absolute; top: 75%; left: 70%; display: flex; padding: 1rem;">
-                        <button style="background-color: red;  padding: rem; border-radius: 0.5rem;"><label for="popup2">Fermer</label> </button>
-                        <button style="background-color: #009088; color: white; padding: 0.5rem; border-radius: 0.5rem;"><label for="popup2">Enregistrer</label> </button>
-                    </span>
-                </div>
+              
             </div>
         
             <div class="mesboutons" style=" position: absolute;left: 50rem;top: 35%;">
                <button style="background-color: #009088; cursor: pointer;  padding: 0.5rem; border-radius: 0.4rem;"> <Label for="popup" style="color: white;"> + nouveau</Label></button>
-                <button style="background-color: #FF8900; padding: 0.5rem; border-radius: 0.4rem;"><label for="popup2" style="color: white;">insertion en masse</label></button>
-                <button style="background-color: #0084A6; padding: 0.5rem; border-radius: 0.4rem;"><a href=""><i class="fa fa-download" style="font-size:15px"></i>fichier model</a/button>
-                <button style="background-color: #0F46A4; padding: 0.5rem; border-radius: 0.4rem;"><a href="">liste des exclus</a></button>
+        
             </div>  
             
                        
@@ -347,31 +272,3 @@
     </div>
 </body>
 </html>
-
-
-<!-- <script>
-var dropdown = document.getElementById('dropdown');
-// Ajouter un gestionnaire d'événements de clic à la liste déroulante
-dropdown.addEventListener('click', function(event) {
-    // Empêcher la propagation de l'événement pour éviter la fermeture de la liste déroulante
-    event.stopPropagation();
-});
-</script> -->
-
-<script>
-   
-    function cliquer(){
-        /* var dropdown = document.getElementById("dropdown"); */
-        var dropdown_content = document.getElementById("dropdown_content");
-        if(dropdown_content.style.display==="none"){
-            
-            dropdown_content.style.display="block";
-
-        
-        }
-        else{
-            dropdown_content.style.display="none";
-        }
-        }
-
-</script>

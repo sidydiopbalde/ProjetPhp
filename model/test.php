@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,44 +9,49 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> 
 </head>
 <body>
 <?php include ('/var/www/html/Projet/model/listeSelectReferentiel.php');?>
             <?php $id=$_SESSION['id']; $selectreferentiel=adapterSelectReferentiel($id);?>
     <div class="conteneur"> 
 
-           <?php  /* if(isset($_POST['ref'])){
-                            $ref=$_POST['ref'] ?? [];
-                            $_SESSION['checkedvalues']= $ref ?? "web";
-                        } */?>
+           
             <div class="interm">
                 <p>Apprenants</p><p style="font-size: 0.8rem;" >promos*Liste* details* Apprenants </p>
             </div> 
             <form method="post" class="interm1" style="position:absolute; top:18%;">
-                <p><span style="color: black;">Promotions:</span>Promotion <?php echo $_SESSION['id']?></p><p><span style="color: black;">Referenciels:</span> 
+                <p><span style="color: black;">Promotions:</span>Promotion <?php echo $_SESSION['id']?></p><span style="color: black; position:absolute; left:40rem;" >Referenciels:</span> 
 
                 <!-- <select name="ref"  onchange="this.form.submit()" id="" style="border:none; color:green; font-size:15px;">
 
                     <option value="referentiel" onchange="this.form.submit()">referentiel</option>
 
-                    <?php foreach($selectreferentiel as $sel):?>
+                    <?php //foreach($selectreferentiel as $sel):?>
 
-                    <option value="<?=$sel['libelleref']?>" onchange="this.form.submit()" <?php if(isset($_POST['ref']) && $_POST['ref']==$sel['libelleref']) echo 'selected'?>> <?=$sel['libelleref']?> </option>
+                    <option value="<?=$sel['libelleref']?>" onchange="this.form.submit()" <?php //if(isset($_POST['ref']) && $_POST['ref']==$sel['libelleref']) echo 'selected'?>> <?=$sel['libelleref']?> </option>
 
-                    <?php endforeach ;?>
+                    <?php //endforeach ;?>
+                    
 
                 </select> -->
-                
+            
+                <?php   if(isset($_POST['ref'])){
+                            $ref=$_POST['ref'] ?? [];
+                         
+                            $_SESSION['checkedvalues']=$ref; 
+                          
+                        }?>
                     <div class="dropdown" id="dropdown">
                       <div onclick="cliquer()">référentiels</div> 
 
                         <div class="liste1" id="dropdown_content" style="position:absolute; z-index:1;">
 
                             <input type="checkbox" name="referentiel" id="referentiel"  onchange="this.form.submit()"><label for="referentiel">tout</label>
+
                                 <?php foreach($selectreferentiel as $sel):?>
 
-                                <div><input type="checkbox" name="ref[]" id="id" onchange="this.form.submit()" value="<?=$sel['libelleref']?>" <?php if(in_array($sel['libelleref'],$_SESSION['checkedvalues'])) echo "checked";?>>  
+                                <div><input type="checkbox" name="ref[]" id="id" onchange="this.form.submit()" value="<?=$sel['libelleref']?>" <?php if(in_array($sel['libelleref'],$_SESSION['checkedvalues'])) echo 'checked';?>>  
 
                                 <label for="id" style="font-size:10px;"><?=$sel['libelleref']?></label>
                         </div>
@@ -156,10 +162,10 @@
                                     $listeApprenants = array_values($listeFiltree); // Réindexer le tableau filtré
                                 }    
                             }  */
-
+                            //filtre pour plusieurs référentiel
 
                             if (!empty($ref)) {
-                                if (in_array("referentiel", $ref)) {
+                                if (in_array( $_SESSION['checkedvalues'],"referentiel")) {
                                     $listeApprenants = remplistApp($id);
                                 } else {
                                     $listeFiltree = array_filter($listeApprenants, function ($apprenant) use ($ref) {

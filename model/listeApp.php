@@ -33,6 +33,38 @@ else{
 }
 }
 
+function list_presence_connecte($id_promo, $matricule)
+{
+$file= '/var/www/html/Projet/data/presence.csv';
+$fp= fopen($file, 'r');
+
+
+if($fp==NULL){
+    echo 'impossible to open file';
+}
+else{
+    $donnees=array();
+    while (($ligne = fgetcsv($fp)) !== false) {
+        if (($ligne[8]==$id_promo) && ($ligne[0]==$matricule)){
+            $donnees[] = array(
+                'Matricule' => $ligne[0],
+                'Nom' => $ligne[1],
+                'Prenom' => $ligne[2],
+                'Telephone' => $ligne[3],
+                'Referentiel' => $ligne[4],
+                'Heure' => $ligne[5],
+                'statut' => $ligne[6],
+                'date' => $ligne[7],
+                'id' => $ligne[8]
+            );
+        }
+       
+    }
+    fclose($fp);  
+    return $donnees;
+}
+}
+
 function remplistApp($id)
 {
     $file= '/var/www/html/Projet/data/apprenants.csv';
@@ -551,7 +583,8 @@ function lister_refercsv($id){
                 $apprenant[]=array(
                     'ref'=>$row[0],
                     'etat'=>$row[1],
-                    'id'=>$row[2]);                 
+                    'id'=>$row[2],
+                    'img'=>$row[3]);                 
             }
         }
         return $apprenant;
@@ -561,17 +594,21 @@ function lister_refercsv($id){
 
 
 
-    function filtre_par_date($date,$id){
-        $tab=remplist($id);
+    function filtrer_par_date($date,$donnee){
+      
         if($date== date('Y-m-d')){
-            return $tab;
+            return $donnee;
         }
-        foreach($tab as $valeur){
-            if($valeur['date']==$date)
-            {
-                $resultat[]=$valeur;
+        else{
+            foreach($donnee as $valeur){
+                if($valeur['date']==$date)
+                {
+                    $resultat[]=$valeur;
+                }
             }
         }
+       
+       /*  var_dump($resultat);  */
     
         return $resultat;
     } 

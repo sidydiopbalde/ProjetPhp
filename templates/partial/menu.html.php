@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -107,7 +108,7 @@ border-radius:0.5rem;
     justify-content: space-between; 
     padding: 1rem;
     position: absolute;
-    left: 65%;
+    left: 60%;
 }
 
 #bouton{
@@ -121,7 +122,7 @@ border-radius:0.5rem;
     height: 3rem;
     background-color: lightgray;
     position: absolute;
-    left: 16rem;
+    left: 10rem;
     border-radius: 100%;
     display: flex;
     justify-content: center;
@@ -157,23 +158,63 @@ border-radius:0.5rem;
 
    </style>
     <title>Document</title>
+   <!--  <script>
+        promo=document.getElementById('promo');
+        if($_SESSION['user']['statut']=='student'){
+            promo.href='#';
+        }
+    </script> -->
 </head>
 
 <body>
 
-    <?php session_start();?>
+    
     <div class="conteneur">
     <input type="checkbox" name="" id="bouton">
         <div class="side-bar">
             <img src="../public/IMG/sonatel.jpeg" alt="sonatel">
             <div class="menu"><p>~~MENU</p>
-                <div class="icone"><i class='fas fa-stream' style='font-size:20px;'></i><a href="?x=1" style="font-size:22px;">Dashboard</a></div>
+
+                <div class="icone"><i class='fas fa-stream' style='font-size:20px;'></i><a href="#" style="font-size:22px;">Dashboard</a></div>
+
+                    <?php if($_SESSION['user']['statut']=='administrateur'):?>
                 <div class="icone"><i class='fas fa-calendar-alt' style='font-size:20px;'></i><a href="?x=1" style="font-size:22px;">Promos</a></div>
+                    <?php endif?>
+                    <?php if($_SESSION['user']['statut']=='student'):?>
+                <div class="icone"><i class='fas fa-calendar-alt' style='font-size:20px;color:gray; '></i><a href="#" id="promo" style="font-size:22px; poniter-events:none; color:gray;">Promos</a></div>
+                    <?php endif?>
+
+                    <?php if($_SESSION['user']['statut']=='administrateur'):?>
                 <div class="icone"><i class='far fa-calendar-alt' style='font-size:20px;'></i><a href="?x=4" style="font-size:22px;">Referenciels</a></div>
+                <?php endif?>
+                <?php if($_SESSION['user']['statut']=='student'):?>
+                <div class="icone"><i class='far fa-calendar-alt' style='font-size:20px; color:gray;'></i><a href="" style="font-size:22px; poniter-events:none; color:gray;">Referenciels</a></div>
+                <?php endif?>
+
+                <?php if($_SESSION['user']['statut']=='administrateur'):?>
                 <div class="icone"><i class="far fa-user-circle" style="font-size:20px; color: black;"></i><a href="?x=8" style="font-size:22px;">Utilisateurs</a></div>
+                <?php endif?>
+                <?php if($_SESSION['user']['statut']=='student'):?>
+                <div class="icone"><i class="far fa-user-circle" style="font-size:20px; color: black; color:gray;"></i><a href="" style="font-size:22px;poniter-events:none; color:gray">Utilisateurs</a></div>
+                <?php endif?>
+
+                <?php if($_SESSION['user']['statut']=='administrateur'):?>
                 <div class="icone"><i class="far fa-user-circle" style="font-size:20px; color: black;"></i><a href="#" style="font-size:22px;">Visiteurs</a></div>
+                <?php endif?>
+                <?php if($_SESSION['user']['statut']=='student'):?>
+                <div class="icone"><i class="far fa-user-circle" style="font-size:20px; color:gray;"></i><a href="#" style="font-size:22px; poniter-events:none; color:gray">Visiteurs</a></div>
+                <?php endif?>
+
                 <div class="icone"><i class="far fa-user-circle" style="font-size:20px; color: black;"></i><a href="?x=2" style="font-size:22px;">Présences</a></div>
                 <div class="icone"><i class='far fa-calendar-alt' style='font-size:20px;'></i><a href="?x=3" style="font-size:22px;">Evenements</a></div>
+
+                <?php if($_SESSION['user']['statut']=='administrateur'):?>
+                <div class="icone"><i class='far fa-user-circle' style='font-size:20px;'></i><a href="?x=11" style="font-size:22px;">Administrateur</a></div>
+                <?php endif?>
+                
+                <?php if($_SESSION['user']['statut']=='student'):?>
+                <div class="icone"><i class='far fa-user-circle' style='font-size:20px; color:gray;'></i><a href="" style="font-size:22px; poniter-events:none; color:gray">Administrateur</a></div>
+                <?php endif?>
             </div> 
         </div>
         <div class="content">
@@ -190,19 +231,32 @@ border-radius:0.5rem;
                             <input type="text" name="search" placeholder="Rechercher par matricule">
                             </form>
                                
-                                
                             </div>
-                   
-                    
+                   <?php 
+                  /*  function deconnecter(){
+
+                    $_SESSION['user']=null; 
+
+                    header("Location: /Projet/public/indexe.php");
+                   }
+                   if( $_SERVER('REQUEST_METHOD')=="POST" && isset($_POST['outlog'])){
+                    deconnecter();
+                   } */
+                    ?>
                 </div>
                 <div class="droite">
                     <div class="date"><input type="date" name="" id="" placeholder="<?php echo date('Y-m-d')?>"></div>
-                    <div class="rond"><img src="sidy.jpeg" alt=""></div>
+                    <div class="rond"><img src="../public/IMG/user.jpeg" alt="user"></div>
                     <div class="statut">
-                       <span style="color:#009088;">Sidy_D_BALDE </span> <br>
-                        admin admin
+                        <?php $nom=$_SESSION['user']['nom'] ; $prenom=$_SESSION['user']['prenom'] ?>
+                       <span style="color:#009088;"><?php echo $nom ;echo $prenom;?> </span> <br>
+
+                       <span><?php echo $_SESSION['user']['statut']?></span> 
                         <!-- <select name="" id=""> -->
-                      <button><a href="/Projet/public/indexe.php">Se déconnecter</a></button>  
+                            <form action="" method="post">
+
+                                <button style="padding:10px; background:red;" name="outlog" type="submit"><a href="/Projet/public/indexe.php">Se déconnecter?</a></button>  
+                            </form>
                        <!--  </select> -->
                     </div>
                 </div>
@@ -231,8 +285,8 @@ border-radius:0.5rem;
 
              else if($_GET["x"]==10)
             include "/var/www/html/Projet/templates/page3.html.php";
-            else if($_GET["x==3"]){
-             
+            else if($_GET["x"]==11){
+                include "/var/www/html/Projet/templates/administrateur.php";
             }
             else{
                 include "/var/www/html/Projet/templates/promo.html.php";

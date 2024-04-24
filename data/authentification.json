@@ -1,0 +1,62 @@
+[
+
+    {
+        "prenom":"Sidy Diop",
+        "nom":"Diop",
+        "email": "sididiop53@gmail.com",
+        "motdepasse": "diopbalde2",
+        "role": "admin"
+    },
+    {
+        "prenom":"Aziz",
+        "nom":"Diop",
+        "email": "azizdiop@gmail.com",
+        "motdepasse": "diop1234",
+        "role": "app"
+    },
+    {
+        "prenom":"Souleye",
+        "nom":"Dieng",
+        "email": "diengsouleye@gmail.com",
+        "motdepasse": "dieng1234",
+        "role": "app"
+    },
+    {
+        "prenom":"Pauline",
+        "nom":"Mendy",
+        "email": "pauline21@hotmail.fr",
+        "motdepasse": "pl2024",
+        "role": "admin"
+    }
+    ,
+    {
+        "prenom":"Mame Aminata",
+        "nom":"Ndoye",
+        "email": "aminatamamee@gmail.com",
+        "motdepasse": "dieng1234",
+        "role": "admin"
+    },
+    {
+        "prenom":"Bayla",
+        "nom":"Wane",
+        "email": "wanebayla21@hotmail.fr",
+        "motdepasse": "pl2024",
+        "role": "admin"
+    }
+    ,
+    {   
+        "prenom":"Ally",
+        "nom":"Tall",
+        "email": "alytall@gmail.com",
+        "motdepasse": "dieng1234",
+        "role": "admin"
+    },
+    {
+        "prenom":"Fallou",
+        "nom":"Seck",
+        "email": "fallouseck21@hotmail.fr",
+        "motdepasse": "pl2024",
+        "role": "app"
+    }
+
+]
