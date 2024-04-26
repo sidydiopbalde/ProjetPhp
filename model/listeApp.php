@@ -612,4 +612,16 @@ function lister_refercsv($id){
     
         return $resultat;
     } 
+   function filter_by_statut($status,$data) {
+        if($status=='status'){
+            return $data;
+        }
+        else{
+            $listefiltred=array_filter($data ,function($apprenant) use($status){
+                return $apprenant['status']==$status;
+            });
+            $donnee=array_values($listefiltred);
+        }
+        return $donnee;
+   }
 ?>

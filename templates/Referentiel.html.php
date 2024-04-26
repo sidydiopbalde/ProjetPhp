@@ -1,10 +1,12 @@
 <?php 
 
-/*  $_SESSION = [
+/*   $_SESSION = [
     "erreur_lbl" => "",
     "erreur_desc" => "",
     "id_promo" => "p2"
-];  */
+];   */
+include "../model/listeApp.php"; 
+$id=$_SESSION['id'];
 //Fonction pour valider le description
 function validate_description($description) {
     
@@ -57,55 +59,49 @@ function validate_libelle($libelle, $liste_referentiels){
     }
             // index 0,   index 1
             return [ $resultat, $msg_error];
-        }
+      }
            
         // Fonction qui permet ajouter des éléments dans un fichier csv
- function ecrit_dans_fichier_csv($path, $data){
-            $file = fopen($path, "a");
-            
-            // On vérifie si on parvient à ouvrir le fichier
-            if($file != null){
-                
-                // On ajoute la nouvelle valeur
-                fputcsv($file, $data);
-                
+            function ecrit_dans_fichier_csv($path, $data){
+                        $file = fopen($path, "a");
+                        
+                        // On vérifie si on parvient à ouvrir le fichier
+                        if($file != null){
+                            
+                            // On ajoute la nouvelle valeur
+                            fputcsv($file, $data);
+                            
+                        }
+                        
+                        fclose($file);
             }
-            
-            fclose($file);
-        }
 
-        // Fonction qui permet de récupérer et de stocker l'image 
+
+
 function recupImage($name_input){
-
     if(isset($_FILES[$name_input])){
-        // On récupére l'image
+        // On récupère l'image
         $image = $_FILES[$name_input];
         $temp = $image["tmp_name"];
         $full_image = explode(".", $image["name"]);
-        $extension = $full_image[count($full_image) - 1];
+        $extension = end($full_image);
         
         // Pour récupérer l'erreur
         $erreur = $image['error'];
         // Si on parvient à charger l'image
         if($erreur == 0){
-            $dir = "../public/IMG/"; // Le chemin vers le dossier ou on veut stocker l'image
+            $dir = "../public/IMG/"; // Le chemin vers le dossier où on veut stocker l'image
             
             // On génère un nouveau nom unique pour l'image
             $name_image = uniqid() ."." . $extension;
-            if(isset($_FILES[$name_input])){
-                // On récupére l'image
-                $image = $_FILES[$name_input];
-                $temp = $image["tmp_name"];
-                $full_image = explode(".", $image["name"]);
-               
-            // On déplace l'image du dossier temporaire vers le dossier
+            
+            // On déplace l'image du dossier temporaire vers le dossier de destination
             if (move_uploaded_file($temp, $dir . $name_image)) {
-                return $dir .$name_image; // On retourne le nom de l'image choisie;
+                return $dir . $name_image; // On retourne le chemin complet de l'image choisie
             }
         }
     }
-}
-    // On retourne le nom de l'image par défaut
+    // On retourne le chemin de l'image par défaut
     return "../public/IMG/pedagogie.jpeg";
 }
         
@@ -119,7 +115,8 @@ function recupImage($name_input){
             $file=trim ($_REQUEST['file']);
 
             
-           /*  $referentiels=lister_refercsv($id); */
+            $referentiels=lister_refercsv($_SESSION["id"]);  
+          
             $validation_libelle = validate_libelle($libelle, $referentiels);
             $validation_desc = validate_description($description);
            
@@ -145,11 +142,6 @@ function recupImage($name_input){
             ecrit_dans_fichier_csv("/var/www/html/Projet/data/referentiel.csv", $nouveau_referentiel);
         }
 
-
-
-
-   
-        
         ?>
 
 
@@ -167,7 +159,7 @@ function recupImage($name_input){
    
 </head>
 <body>
-  <!--   <div class="conteneur"> -->
+
    
          
             <div class="interm">
@@ -177,14 +169,13 @@ function recupImage($name_input){
           
             <div class="referentiels">
               <?php  
-                    include "../model/listeApp.php"; 
-                    $id=$_SESSION['id'];
+                  
 
                foreach(lister_refercsv($id) as $tableau): 
                ?>
                     <span class="refdyn"> 
                         <span>...</span>
-                       <a href="?x=8"> <img src="<?=$tableau["img"]?>" alt="" style="width:100%;"></a>
+                       <a href="?x=8"> <img src="<?=$tableau["img"]?>" alt="" style="width:60%;"></a>
                         <!-- redirection vers la liste des apprenants selon le referentiel choisi -->
                         <form action="?x=8"  method="post">
                         <button name="ref[]" value="<?= $tableau["ref"]?>"  type="submit"><span><?= $tableau["ref"]?></span></button>  
@@ -218,7 +209,7 @@ function recupImage($name_input){
                             <input type="file" name="file" id="file" hidden>
                             <label for="file">chosir une image</label>
                          </span>
-                         <span class="msg-error">Vous n'avez pas choisi une image</span>
+                         <span class="msg-error" >Vous n'avez pas choisi une image</span>
                         
                         <span><button type="submit"  name="ajouter-ref" style="background-color: #009088; color: white;position: absolute;left:6rem;padding: 0.5rem; border-radius: 0.3rem;">Enregistrer</button></span>
                       
@@ -235,8 +226,8 @@ function recupImage($name_input){
 </html>
 <script>
     const input = document.getElementById("file");
-
     const image = document.querySelector("form .group img");
+    
 
     const msg_error = document.querySelector(".msg-error");
 

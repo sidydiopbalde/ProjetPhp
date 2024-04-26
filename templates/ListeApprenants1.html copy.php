@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+   <?php   if(isset($_POST['ref'])){
+                            $ref=$_POST['ref'] ?? [];
+                            $_SESSION['checkedvalues']= $ref ;
+                        } ?>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,15 +19,12 @@
             <?php $id=$_SESSION['id']; $selectreferentiel=adapterSelectReferentiel($id);?>
     <div class="conteneur"> 
 
-           <?php  /* if(isset($_POST['ref'])){
-                            $ref=$_POST['ref'] ?? [];
-                            $_SESSION['checkedvalues']= $ref ?? "web";
-                        } */?>
+         
             <div class="interm">
                 <p>Apprenants</p><p style="font-size: 0.8rem;" >promos*Liste* details* Apprenants </p>
             </div> 
             <form method="post" class="interm1" style="position:absolute; top:18%;">
-                <p><span style="color: black;">Promotions:</span>Promotion <?php echo $_SESSION['id']?></p><p><span style="color: black;">Referenciels:</span> 
+                <p><span style="color: black;">Promotions<?php if(in_array($sel['libelleref'],$_SESSION['checkedvalues'])) echo "checked";?>:</span>Promotion <?php echo $_SESSION['id']?></p><p><span style="color: black; position:absolute; left:70rem; top:2rem;">Referenciels:</span> 
 
                 <!-- <select name="ref"  onchange="this.form.submit()" id="" style="border:none; color:green; font-size:15px;">
 
@@ -38,9 +39,9 @@
                 </select> -->
                 
                     <div class="dropdown" id="dropdown">
-                      <div onclick="cliquer()">référentiels</div> 
+                      <div onclick="cliquer()" style="position:absolute; left:23rem;top:-1rem; border:1px solid;width:8rem; background:whitesmoke; border-radius:10px; cursor:pointer">référentiels</div> 
 
-                        <div class="liste1" id="dropdown_content" style="position:absolute; z-index:1;">
+                        <div class="liste1" id="dropdown_content" style="position:absolute;left:23rem; top:1rem;z-index:1;">
 
                             <input type="checkbox" name="referentiel" id="referentiel"  onchange="this.form.submit()"><label for="referentiel">tout</label>
                                 <?php foreach($selectreferentiel as $sel):?>

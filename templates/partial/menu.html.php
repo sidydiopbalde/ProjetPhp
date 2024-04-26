@@ -175,7 +175,7 @@ border-radius:0.5rem;
             <img src="../public/IMG/sonatel.jpeg" alt="sonatel">
             <div class="menu"><p>~~MENU</p>
 
-                <div class="icone"><i class='fas fa-stream' style='font-size:20px;'></i><a href="#" style="font-size:22px;">Dashboard</a></div>
+                <div class="icone"><i class='fas fa-stream' style='font-size:20px;'></i><a href="?x=12" style="font-size:22px;">Dashboard</a></div>
 
                     <?php if($_SESSION['user']['statut']=='administrateur'):?>
                 <div class="icone"><i class='fas fa-calendar-alt' style='font-size:20px;'></i><a href="?x=1" style="font-size:22px;">Promos</a></div>
@@ -266,7 +266,7 @@ border-radius:0.5rem;
           
             if($_GET["x"]==2)
             include "/var/www/html/Projet/templates/tab.php";
-
+            
             //else if($_GET["x"]==3)
            // include "/var/www/html/Projet/templates/listePresence.html.php";
 
@@ -285,9 +285,12 @@ border-radius:0.5rem;
 
              else if($_GET["x"]==10)
             include "/var/www/html/Projet/templates/page3.html.php";
-            else if($_GET["x"]==11){
+            else if($_GET["x"]==11)
                 include "/var/www/html/Projet/templates/administrateur.php";
-            }
+                else if($_GET["x"]==12)
+                    include "/var/www/html/Projet/templates/Accueil.html.php";
+
+            
             else{
                 include "/var/www/html/Projet/templates/promo.html.php";
             }

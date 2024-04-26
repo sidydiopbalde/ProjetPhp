@@ -46,11 +46,12 @@
                         
                         $date_select = isset($_POST['date1']) ? $_POST['date1'] : date('Y-m-d');
 
-                        $reset=$_POST['reset'];
+                       /*  $reset=$_POST['reset']; */
 
                         $nombrePage=10;
                         $debut=($w-1)*$nombrePage;
                         $id_prom=$_SESSION['id'];
+
                         //récupérer la liste compléte des apprenants
                         $val=remplist($id_prom);
                         
@@ -108,9 +109,9 @@
                     // recherchre sur la barre de recherche globale
                     if(isset($_POST['search'])){
                         $search=$_POST['search'];
-                        /* var_dump($search); */
+                       
                         $referentiel = $_POST['referentiel'];
-                        var_dump($referentiel);
+                      
                         
                     }
 
@@ -202,7 +203,9 @@
                             <td style=" background-color: #F7FAFF; border-radius:0.5rem">
                             <div><?= $Etudiants["statut"] ?></div> 
                              </td>
+                            
                                 <td><?=$Etudiants["date"]?></td>
+                             
                          </tr>
                      <?php endforeach; ?>
                  </tbody>
@@ -264,18 +267,28 @@
                 
                     <!-- afficher tous les referentiels si l'admin est connecté -->
                 <?php if($_SESSION['user']['statut']=='administrateur'):?>
+
                 <select name="referentiel" id="selection2" style="border-radius: 0.4rem ;background:white;">
-                <option value="referentiel" <?php if(isset($_POST['referentiel']) && $_POST['referentiel']=='referentiel') echo 'selected'?>>referentiel</option>
 
-                    <?php foreach($selectreferentiel as $refe):?>
-                         <option <?php if(isset($_POST['referentiel']) && $_POST['referentiel']==$refe['libelleref']) echo 'selected'?>
-                                  value="<?=$refe['libelleref']?>" > <?=$refe['libelleref']?>  </option>
+                    <option value="referentiel" <?php if(isset($_POST['referentiel']) && $_POST['referentiel']=='referentiel') echo 'selected'?>>référentiel</option>
 
-                   <?php endforeach?>
+                         <?php foreach($selectreferentiel as $refe):?>
+                            <option <?php if(isset($_POST['referentiel']) && $_POST['referentiel']==$refe['libelleref']) echo 'selected'?>
+                                  value="<?=$refe['libelleref']?>"> <?=$refe['libelleref']?>  </option>
+
+                         <?php endforeach?>
                 </select>
+
+                <?php endif?>
+                <?php if($_SESSION['user']['statut']=='student'):?>
+                <input type="date" name="date1" style="border-radius: 0.4rem" value="">
                 <?php endif?>
 
-                <input type="date" name="date1" style="border-radius: 0.4rem" value="">
+                    <?php $dateChoisie= isset($_POST['date1']) ? $_POST['date1']:date('Y-m-d');?>
+                <?php if($_SESSION['user']['statut']=='administrateur'):?>
+                <input type="date" name="date1" style="border-radius: 0.4rem" value="<?php echo $dateChoisie;?>">
+                <?php endif?>
+
                 <button type="submit" name="" style="background-color:#009088;width:10rem; color:white;border-radius: 0.4rem ;">Rafraichir</button>
             <!-- <button type="reset"  name="reset" value="reset">Reset</button> -->
         </form>
@@ -284,9 +297,9 @@
      <span style="position:absolute;bottom:2rem; left:2rem;">
      <span>item per page</span> 
         <span>
-            <select name="" id="">
-                <option value="">10</option>
-                <option value="">20</option>
+            <select name="paginer" id="">
+                <option value="" onchange='this.form.submit()'>10</option>
+                <option value="" onchange='this.form.submit()'>20</option>
             </select>
         </span>   
      </span>       

@@ -158,3 +158,38 @@ P5_DEV_DATA_2024_154,Seck,Paul,789032129,REF DIG,06:09,PRESENT,2024-04-20,5
 P6_DEV_DATA_2024_127,Paul,Seck,702318934,WEB,06:07,ABSENT,2024-04-20,6
 P6_DEV_DATA_2024_110,Aziz,Diop,702318934,WEB,06:07,ABSENT,2024-04-20,6
 P6_DEV_DATA_2024_110,Aziz,Diop,702318934,WEB,06:07,PRESENT,2024-04-20,6
+
+        // Fonction qui permet de récupérer et de stocker l'image 
+        function recupImage($name_input){
+
+            if(isset($_FILES[$name_input])){
+                // On récupére l'image
+                $image = $_FILES[$name_input];
+                $temp = $image["tmp_name"];
+                $full_image = explode(".", $image["name"]);
+                $extension = $full_image[count($full_image) - 1];
+                
+                // Pour récupérer l'erreur
+                $erreur = $image['error'];
+                // Si on parvient à charger l'image
+                if($erreur == 0){
+                    $dir = "../public/IMG/"; // Le chemin vers le dossier ou on veut stocker l'image
+                    
+                    // On génère un nouveau nom unique pour l'image
+                    $name_image = uniqid() ."." . $extension;
+                    if(isset($_FILES[$name_input])){
+                        // On récupére l'image
+                        $image = $_FILES[$name_input];
+                        $temp = $image["tmp_name"];
+                        $full_image = explode(".", $image["name"]);
+                       
+                    // On déplace l'image du dossier temporaire vers le dossier
+                    if (move_uploaded_file($temp, $dir . $name_image)) {
+                        return $dir .$name_image; // On retourne le nom de l'image choisie;
+                    }
+                }
+            }
+        }
+            // On retourne le nom de l'image par défaut
+            return "../public/IMG/pedagogie.jpeg";
+        }
